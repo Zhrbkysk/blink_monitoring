@@ -53,8 +53,9 @@ class Camera(BaseCamera):
                         (10, 50), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 2, cv2.LINE_AA)
 
             history.add_eyes_state(eyes_state)
-            data = history.get_graph_image()
-            img = cv2.vconcat([img, data])
+            graph_second = history.get_graph_image("second")
+            graph_minute = history.get_graph_image("minute")
+            img = cv2.vconcat([img, graph_second, graph_minute])
 
 
             # encode as a jpeg image and return it

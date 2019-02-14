@@ -45,7 +45,7 @@ class EyeDetector:
         return unique_eyes
 
     def low_pass_filter(self, face):
-        face = [int(f_pre * 0.9 + f * 0.1) for f_pre, f in zip(self.face_previous, face)]
+        face = [int(f_pre * 0.5 + f * 0.5) for f_pre, f in zip(self.face_previous, face)]
         return face
 
     def get_eyes_state(self, img):
