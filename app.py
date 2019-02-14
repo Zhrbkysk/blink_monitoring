@@ -17,10 +17,11 @@ def streaming(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+C = Camera()
 
 @app.route("/streaming_camera")
 def streaming_camera():
-    return Response(streaming(Camera()),
+    return Response(streaming(C),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
